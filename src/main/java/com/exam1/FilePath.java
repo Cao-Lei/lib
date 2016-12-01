@@ -5,13 +5,27 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class FilePath {
+    /**
+     * @param args
+     * 1.±éÀú³öÒ»¸öÎÄ¼ş¼ĞÏÂµÄËùÓĞÎÄ¼ş£¬²¢Õ¹Ê¾³ö²ã¼¶¹ØÏµ£¬ÎÄ¼ş¼ĞÓÅÏÈÏÔÊ¾£¬×îºóÒÔÒ»¶¨¸ñÊ½Ğ´ÈëÎÄ±¾ÖĞ
+     * ÒªÇó£º¾¡¿ÉÄÜ¼òµ¥¡¢Âß¼­ÇåÎú
+     * ËùÑ¡´æ´¢¸ñÊ½½á¹¹Ò²ÄÜ¿´³ö²ã¼¶¹ØÏµ£¬²¢¿É¶ÁĞ´ºóÖ±½ÓÊ¹ÓÃ
+     */
+
     private static ArrayList<String> filelist = new ArrayList<String>();
-    public static void main(String[] args) throws Exception{
-        String path = "D:\\Android UI åˆ/ç¬¬ä¸€å‘¨å‘¨è€ƒ";
-        getFiles(path);
+
+    public static void main(String[] args) throws Exception {
+        // TODO Auto-generated method stub
+        File mPath = new File("D:/Android UI ³õ/µÚÒ»ÖÜÖÜ¿¼") ;// ²Ù×÷Â·¾¶,¿ÉÒÔÓĞÍâ²¿²ÎÊı¾ö¶¨µÄ   + File.separator
+        print(mPath) ;
+
+/*
+        String path = "D:\\Android UI ³õ/µÚÒ»ÖÜÖÜ¿¼";
+        getFiles(path);*/
     }
 
-    private static void getFiles(String path) {
+   /* private static void getFiles(String path) {
+
         File file = new File(path);
 
         File[] files = file.listFiles();
@@ -24,10 +38,32 @@ public class FilePath {
 
                 filelist.add(f.getAbsolutePath());
 
-                System.out.print("æ˜¾ç¤º" + path + "ä¸‹æ‰€æœ‰å­ç›®å½•æœºå™¨æ–‡ä»¶" + f.getAbsolutePath() + "\n");
+                System.out.print("ÏÔÊ¾" + path + "ÏÂËùÓĞ×ÓÄ¿Â¼»úÆ÷ÎÄ¼ş" + f.getAbsolutePath() + "\n");
             } else {
-                System.out.print("\næ˜¾ç¤º" + path + "ä¸‹æ‰€æœ‰å­ç›®å½•" + f.getAbsolutePath());
+                System.out.print("\nÏÔÊ¾" + path + "ÏÂËùÓĞ×ÓÄ¿Â¼" + f.getAbsolutePath());
             }
         }
-    }
+    }*/
+
+    public static void print(File file){// µİ¹éµ÷ÓÃ
+        // ÅĞ¶Ï¶ÔÏóÊÇ·ñÎª¿Õ
+        if(file!=null){
+            // Èç¹ûÊÇÄ¿Â¼
+            if(file.isDirectory()){
+                // ÁĞ³öÈ«²¿µÄÎÄ¼ş
+                File f[] = file.listFiles() ;
+                // ÅĞ¶Ï´ËÄ¿Â¼ÄÜ·ñÁĞ³ö
+                if(f!=null){
+                    for(int i=0;i<f.length;i++){
+                        // ÒòÎª¸øµÄÂ·¾¶ÓĞ¿ÉÄÜÊÇÄ¿Â¼£¬ËùÒÔ£¬¼ÌĞøÅĞ¶Ï  ÀûÓÃµİ¹éµÄË¼Ïë
+                        print(f[i]) ;
+                    }
+                }
+            }else{
+                // Êä³öÂ·¾¶
+                System.out.println(file) ;
+            }
+        }
+    };
+
 }
